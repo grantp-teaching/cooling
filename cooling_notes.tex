@@ -1,12 +1,16 @@
 \documentclass{pgnotes}
 
-\title{Cooling}
+\title{Data Centre Cooling}
 
 \begin{document}
 
 \maketitle
 
-Recommended background reading from the APC white paper library \href{https://whitepapers.apc.com/}{APC white papers}:
+\tableofcontents
+
+\newpage
+
+%Recommended background reading from the APC white paper library \href{https://whitepapers.apc.com/}{APC white papers}:
 %\begin{itemize}
 %\item APC white paper 57 \citep{evans:2014:fundamental}
 %\item APC white paper 59 \citep{evans:2012:the-different}
@@ -77,7 +81,7 @@ In order to keep the temperature and relative humidity within permitted limits, 
 \autoref{fig:cooling-methods} shows the available cooling methods for smaller data centres and server rooms.
 As the IT Load increases in size, we often require dedicated cooling solutions.
 
-\autoimage*{cooling_method_guide}{Cooling methods (APC)}{cooling-methods}
+\autoimage{cooling_method_guide}{Cooling methods (APC)}{cooling-methods}
 
 \subsection{Fan-assisted ventilation}
 
@@ -98,7 +102,7 @@ Consider trying to keep a room at 22C when the outdoor temperature is 34C!
 The only way to make heat ``flow uphill'' from cold to hot is to assist it.
 From our point of view, we want to remove heat from our computer room and reject it to the atmosphere, to keep the room temperature under control.
 \autoref{fig:refrigeration-cycle} shows the basic refrigeration cycle.
-For a more thorough treatment, see \citet{evans:2014:fundamental}.
+%For a more thorough treatment, see \citet{evans:2014:fundamental}.
 
 \autoimage{refrigeration_cycle}{Refrigeration cycle}{refrigeration-cycle}
 
@@ -132,7 +136,7 @@ DX systems where the evaporator directly meets air in the data centre environmen
 
 DX systems normally take the form of a \textbf{Computer Room Air Conditioner}, or CRAC.
 A CRAC is normally a large floor-standing unit containing the evaporator coil, blower fan, compressor and other components.
-For in-depth information refer to \citet{evans:2012:the-different}.
+%For in-depth information refer to \citet{evans:2012:the-different}.
 
 \autoimage{crac_photo}{Photo of a Computer Room Air Conditioner}{crac-photo}
 
