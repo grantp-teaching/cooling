@@ -81,3 +81,5 @@ Write-Host " "
 Write-Host "Correct answer = $Target $Units" -ForegroundColor Cyan	
 Write-Host "Normalised error: $NormalisedError"
 
+Write-Host ""
+
