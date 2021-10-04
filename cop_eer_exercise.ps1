@@ -1,32 +1,73 @@
 # COP to EER conversion exercise
 
+$GreenCheck = @{
+  Object = [Char]8730
+  ForegroundColor = 'Green'
+  NoNewLine = $true
+  }
+
+$RedX = @{
+    Object =  'X'
+    ForegroundColor = 'Red'
+    NoNewLine = $true
+}
+
 $COP = [math]::Round((Get-Random -Minimum 1.2 -Maximum 5.0),1)
 $EER = [math]::Round(3.412 * $COP,1)
 
-$QuestionSelect = Get-Random -Min 0 -Max 1 
+$Variant = [math]::Round((Get-Random -Minimum -0.2 -Maximum 1.2),0)
 
-if ( 0 -eq $QuestionSelect ) {
-$QText = "A cooling system has an EER of $EER. Convert to COP."
+switch ($Variant) {
+0 {
+$QuestionText = "A cooling system has an EER of $EER. Convert to COP."
 $Target = $COP
+$Solution = "
+COP = EER / 3.412
+    = $EER / 3.412
+    = $COP ... no units! 
+"
 }
-elseif ( 1 -eq $QuestionSelect ) {
-$QText = "A cooling system has a COP of $COP. Covert to EER."
+
+1 {
+$QuestionText = "A cooling system has a COP of $COP. Covert to EER."
 $Target=$EER
+$Solution = "
+EER = COP * 3.412
+    = $COP * 3.412
+    = $EER ... no units! 
+"
 }
 
-Write-Host $QText
+default {
+Write-Error "Variant $Variant not found"
+Return
+}
 
-$Answer = [math]::Round((Read-Host "Answer = "), 1)
+}
 
-Write-Host "Correct answer = $Target"
+Clear-Host
+Write-Host $QuestionText
+Write-Host " "
 
+$Answer = Read-Host "Enter answer [$Units]"
+Write-Host " "
+
+$Target = [math]::Round($Target,2)
 $NormalisedError = [math]::Round(($Answer - $Target)/$Target,2)
-Write-Host "Normalised error: $NormalisedError"
 
-if ( [math]::Abs($NormalisedError) -lt 0.01 ) {
-   Write-Host "your answer is correct"
-   }
-else {
-   Write-Host "your answer is wrong"
-   }
+if ( [Math]::Abs($NormalisedError) -lt 0.01 ) {
+  Write-Host @GreenCheck 
+  Write-Host " your answer was correct"
+} else {
+  Write-Host @RedX
+  Write-Host " your answer was wrong"
+}
+Write-Host " "
+
+Write-Host $Solution -ForegroundColor Yellow
+
+Write-Host " "
+
+Write-Host "Correct answer = $Target $Units" -ForegroundColor Cyan	
+Write-Host "Normalised error: $NormalisedError"
 
